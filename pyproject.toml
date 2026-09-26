@@ -7,7 +7,10 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+<<<<<<< HEAD
     "pydantic (>=2.13.5,<3.0.0)"
+=======
+>>>>>>> 7459f733638c7a63d9d9c4f90ee90a95640d7a89
 ]
 
 
