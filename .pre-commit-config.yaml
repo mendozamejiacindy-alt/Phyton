@@ -7,12 +7,6 @@ repos:
         language: system
         types: [python]
 
-      - id: isort
-        name: isort
-        entry: poetry run isort
-        language: system
-        types: [python]
-
       - id: ruff
         name: ruff
         entry: poetry run ruff check
