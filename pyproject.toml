@@ -48,3 +48,7 @@ force-exclude = true
 
 [tool.ruff.lint]
 ignore = ["I001", "B008"]
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*"]
+disable_error_code = ["import-untyped"]
