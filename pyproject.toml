@@ -19,7 +19,10 @@ dependencies = [
     "pandas (>=3.0.6,<4.0.0)",
     "scikit-learn (>=1.9.1,<2.0.0)",
     "joblib (>=1.6.0,<2.0.0)",
-    "typer (>=0.27.2,<0.28.0)"
+    "typer (>=0.27.2,<0.28.0)",
+    "grpcio (>=1.84.0,<2.0.0)",
+    "grpcio-tools (>=1.84.0,<2.0.0)",
+    "redis (>=8.1.0,<9.0.0)"
 ]
 
 [build-system]
@@ -44,12 +47,27 @@ target-version = ["py312"]
 
 [tool.ruff]
 target-version = "py312"
-exclude = ["alembic"]
+exclude = ["alembic", "src/actividad_18/proto"]
 force-exclude = true
 
 [tool.ruff.lint]
 ignore = ["I001", "B008"]
 
+[tool.mypy]
+exclude = "src/actividad_18/proto/.*\\.py$"
+
 [[tool.mypy.overrides]]
 module = ["sklearn.*"]
 disable_error_code = ["import-untyped"]
+
+[[tool.mypy.overrides]]
+module = [
+    "actividad_18.proto.orders_pb2",
+    "actividad_18.proto.orders_pb2_grpc"
+]
+ignore_errors = true
+follow_imports = "skip"
+
+[[tool.mypy.overrides]]
+module = ["grpc.*", "google.protobuf.*"]
+ignore_missing_imports = true
